@@ -29,7 +29,10 @@ def unzip_file(zip_filename, extract_dir):
 def main():
     url = input(f"{colors.CYAN}Enter the URL of the ZIP file to download: {colors.END}")
     zip_filename = 'zip_archives_' + datetime.now().strftime("%Y-%m-%d %H:%M:%S") +'.zip'
-    download_directory = "/Users/danielhu/Documents/VSCode/citibike-data/zip_archives"
+    if not os.path.exists("zip_archives"):
+        os.makedirs("zip_archives")
+    download_directory = os.path.join(os.getcwd(), "zip_archives")
+
 
     # Download the file to the specified directory
     download_file(url, download_directory, zip_filename)
