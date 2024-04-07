@@ -16,7 +16,7 @@ year = csv_file_path.split('-')[2][:4]
 plt.title(f'Number of Trips by User Type: {year}')
 plt.xlabel('User Type')
 plt.ylabel('Number of Trips')
-plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+plt.xticks(rotation=45)  # Rotate x-axis labels for readability
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()

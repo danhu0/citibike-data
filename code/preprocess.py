@@ -61,3 +61,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#TODO (extra bells and whistles):
+# 1.
+# Add error handling for invalid URL inputs, do something with 
+# the return boolean of download_file! Would be nice if terminal 
+# quit nicely or prompted again if the file download fails.
+
+# 2.
+# Add a fun little progress bar for the download process. Takes
+# a while for the full year csvs to download so it would be nice
+# to have a little progress bar to show the user that the download
+# is still in progress.
