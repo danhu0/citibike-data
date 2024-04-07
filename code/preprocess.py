@@ -23,6 +23,7 @@ def unzip_file(zip_filename, extract_dir):
     print(f"{colors.GREEN}File extracted successfully!{colors.END}")
 
 def main():
+    # Prompt user for URL or date input
     while True:
         mode = input("Manual URL or Date Input (manual/date): ")
         if mode == "manual" or mode == "date":
@@ -30,12 +31,16 @@ def main():
         else:
             print("usage: Enter 'manual' or 'date'")
 
+    # Download the zip file
     if mode == "manual":
         url = input("Enter the URL of the ZIP file to download: ")
     elif mode == "date":
         year = input("Year: ")
         month = int(input("Month (1-12, or 0 if importing a whole year): "))
-        url = f"https://s3.amazonaws.com/tripdata/JC-{year}{month:02d}-citibike-tripdata.csv.zip"
+        if month == 0:
+            url = f"https://s3.amazonaws.com/tripdata/{year}-citibike-tripdata.zip"
+        else:
+            url = f"https://s3.amazonaws.com/tripdata/JC-{year}{month:02d}-citibike-tripdata.csv.zip"
     
     zip_filename = 'zip_archives_' + datetime.now().strftime("%Y-%m-%d %H:%M:%S") +'.zip'
     if not os.path.exists("zip_archives"):
@@ -44,6 +49,7 @@ def main():
 
     download_file(url, download_directory, zip_filename)
 
+    # Extract the zip file
     extract_dir = input("Enter the directory to extract the contents to: ")
     if not os.path.exists(extract_dir):
         os.makedirs(extract_dir)
