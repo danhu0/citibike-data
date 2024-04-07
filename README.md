@@ -1,5 +1,7 @@
-# citibike-data
-Python code which downloads and processes Citibike data.
+# Overview/Visualization Demo
+```preprocess.py```, located in the ```code``` directory, queries the Citibike data and stores it in a .csv file in a directory specified by the user.
+
+CSV data can be accessed pandas and then visualized matplotlib. A short demo of this process, using preprocessed data from 5/2018, can be seen by running ```simple_visualize_demo.py``` in the ```demo``` directory.
 
 # Downloading/Unzipping Citibike Data
 ### Download by date
