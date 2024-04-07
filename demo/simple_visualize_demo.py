@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Extracts the data from the csv
-csv_file_path = '/Users/danielhu/Documents/VSCode/citibike-data/5_2018_data/JC-201805-citibike-tripdata.csv'
+csv_file_path = '/Users/danielhu/Documents/VSCode/citibike-data/demo/5_2018_data/JC-201805-citibike-tripdata.csv'
 df = pd.read_csv(csv_file_path)
 
 # Transfrom data
