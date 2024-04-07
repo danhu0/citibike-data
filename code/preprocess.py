@@ -13,13 +13,16 @@ def download_file(url, directory, filename):
     try:
         urllib.request.urlretrieve(url, filepath)
         print(f"{colors.GREEN}File downloaded successfully!{colors.END}")
+        return True
     except urllib.error.URLError as e:
         print(f"Failed to download file: {e.reason}")
-        return
+        return False
 
 def unzip_file(zip_filename, extract_dir):
     with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
-        zip_ref.extractall(extract_dir)
+        for file in zip_ref.namelist():
+            if not file.startswith('__MACOSX'): # On my local machine, __MACOSX is a file containing metadata that I don't want to extract
+                zip_ref.extractall(extract_dir)
     print(f"{colors.GREEN}File extracted successfully!{colors.END}")
 
 def main():
