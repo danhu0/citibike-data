@@ -26,7 +26,7 @@ def unzip_file(zip_filename, extract_dir):
     except zipfile.BadZipFile as e:
         print(f"Failed to extract file: {e}")
 
-def main():
+def process():
     # Prompt user for URL or date input
     while True:
         mode = input("Manual URL or Date Input (manual/date): ")
@@ -53,10 +53,13 @@ def main():
     download_file(url, download_directory, zip_filename)
 
     # Extract the zip file
-    extract_dir = input("Enter the directory to extract the contents to: ")
+    extract_dir = os.path.join(os.getcwd(), "data")
     if not os.path.exists(extract_dir):
         os.makedirs(extract_dir)
     unzip_file(os.path.join(download_directory, zip_filename), extract_dir)
+
+def main():
+    process()
 
 if __name__ == "__main__":
     main()
