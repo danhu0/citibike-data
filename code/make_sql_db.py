@@ -5,7 +5,7 @@ def main():
     # Parses the CSV file, adds all headers to a list
     csv_filepath = input("Enter the path to the CSV file: ")
     df = pd.read_csv(csv_filepath)
-    print(df)
+    # print(df)
     headers = df.columns.tolist()
 
     # Define SQLite database filename and connect to/create database
