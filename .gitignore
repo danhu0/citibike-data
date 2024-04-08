@@ -1,3 +1,4 @@
 data/
 zip_archives/
 temp_demo_spec_code/
+__pycache__/
