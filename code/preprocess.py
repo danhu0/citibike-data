@@ -13,17 +13,18 @@ def download_file(url, directory, filename):
     try:
         urllib.request.urlretrieve(url, filepath)
         print(f"{colors.GREEN}File downloaded successfully!{colors.END}")
-        return True
     except urllib.error.URLError as e:
         print(f"Failed to download file: {e.reason}")
-        return False
 
 def unzip_file(zip_filename, extract_dir):
-    with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
-        for file in zip_ref.namelist():
-            if not file.startswith('__MACOSX'): # On my local machine, __MACOSX is a file containing metadata that I don't want to extract
-                zip_ref.extractall(extract_dir)
-    print(f"{colors.GREEN}File extracted successfully!{colors.END}")
+    try: 
+        with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
+            for file in zip_ref.namelist():
+                if not file.startswith('__MACOSX'): # On my local machine, __MACOSX is a file containing metadata that I don't want to extract
+                    zip_ref.extractall(extract_dir)
+        print(f"{colors.GREEN}File extracted successfully!{colors.END}")
+    except zipfile.BadZipFile as e:
+        print(f"Failed to extract file: {e}")
 
 def main():
     # Prompt user for URL or date input
@@ -49,27 +50,13 @@ def main():
     if not os.path.exists("zip_archives"):
         os.makedirs("zip_archives")
     download_directory = os.path.join(os.getcwd(), "zip_archives")
-
     download_file(url, download_directory, zip_filename)
 
     # Extract the zip file
     extract_dir = input("Enter the directory to extract the contents to: ")
     if not os.path.exists(extract_dir):
         os.makedirs(extract_dir)
-
     unzip_file(os.path.join(download_directory, zip_filename), extract_dir)
 
 if __name__ == "__main__":
     main()
-
-#TODO (extra bells and whistles):
-# 1.
-# Add error handling for invalid URL inputs, do something with 
-# the return boolean of download_file! Would be nice if terminal 
-# quit nicely or prompted again if the file download fails.
-
-# 2.
-# Add a fun little progress bar for the download process. Takes
-# a while for the full year csvs to download so it would be nice
-# to have a little progress bar to show the user that the download
-# is still in progress.
