@@ -1,6 +1,6 @@
 # Overview/Visualization Demo
 
-`preprocess.py`, located in the `code` directory, queries the Citibike data and stores it in a .csv file in a directory specified by the user.
+`preprocess.py`, located in the `code` directory, queries the Citibike data and stores it in a .csv file in a directory specified by the user. It can be run with or without params (directions for using without params is included down below).
 
 CSV data can be accessed pandas and then visualized with matplotlib. A short demo of this process, using preprocessed data from May, 2018, can be seen by running `simple_visualize_demo.py` in the `demo` directory.
 
