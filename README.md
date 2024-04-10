@@ -33,6 +33,6 @@ Two options for downloading the Citibike data: downloading by date or by manuall
 3. Follow the rest of the terminal instructions to name the db and table
 
 # Remaining TODOs (if time)
-
-1. Add some error handling for invalid terminal input in the unzipping process, should prompt the user to try again if the download failed and print out some descriptive messages (could make the download and unzip functions return something and modify the REPL behavior)
-2. Add progress bar as the zips download and unzips (look into tqdm). Downloading whole years can take a while and it'd be nice to know the download is still happening/how long it'll take.
+1. Add some way to combine multiple csvs (can do this with pandas ```.merge``` function)
+2. Add some error handling for invalid terminal input in the unzipping process, should prompt the user to try again if the download failed and print out some descriptive messages (could make the download and unzip functions return something and modify the REPL behavior)
+3. Add progress bar as the zips download and unzips (look into tqdm). Downloading whole years can take a while and it'd be nice to know the download is still happening/how long it'll take.
